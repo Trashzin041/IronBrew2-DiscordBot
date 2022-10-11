@@ -62,7 +62,7 @@ client.on('messageCreate', (message) => {
             if (code) {
 				message.channel.send('obfuscating...');
 				fs.writeFileSync(`./uploads/${filename}.lua`, code.toString());
-				exec("dotnet `IronBrew2 CLI.dll` `./uploads/${filename}.lua`")
+				exec(`dotnet "IronBrew2 CLI.dll" "./uploads/${filename}.lua"`)
 				
 			setTimeout(() => {
 				var data = fs.readFileSync(`./obfuscated/output.lua`).toString().split("\n");
@@ -110,7 +110,7 @@ async function obfuscate(content, message) {
 	if(attachment) {
 		request.get(attachment.url)
 		fs.writeFileSync(`./uploads/${filename}.lua`, content);
-		exec("dotnet `IronBrew2 CLI.dll` `./uploads/${filename}.lua`")
+		exec(`dotnet "IronBrew2 CLI.dll" "./uploads/${filename}.lua"`)
 
 		setTimeout(() => {
 			var data = fs.readFileSync(`./obfuscated/output.lua`).toString().split("\n");
